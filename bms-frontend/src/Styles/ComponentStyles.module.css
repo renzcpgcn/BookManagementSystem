@@ -1,0 +1,116 @@
+/* General Layout and Alignment */
+.container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    max-width: 600px;
+}
+
+/* Header Styles for Component Titles */
+.header {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Book List Styling */
+.bookList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bookItem {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bookItem span {
+    font-weight: 500;
+    color: #444;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.actionButton {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+    background-color: #0056b3;
+}
+
+.deleteButton {
+    background-color: #dc3545;
+}
+
+.deleteButton:hover {
+    background-color: #b02a37;
+}
+
+/* Book Details Styling */
+.details {
+    line-height: 1.6;
+}
+
+.detailLabel {
+    font-weight: bold;
+    color: #555;
+}
+
+.detailValue {
+    color: #333;
+}
+
+/* Form Styling */
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputField,
+.textArea {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.textArea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.saveButton {
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.saveButton:hover {
+    background-color: #218838;
+}
