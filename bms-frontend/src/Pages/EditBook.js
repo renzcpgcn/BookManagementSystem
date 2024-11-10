@@ -9,7 +9,7 @@ const EditBook = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.header}>Edit Book</h1>
+            {/* <h1 className={styles.header}>Edit Book</h1> */}
             <BookForm bookId={id} onSave={() => navigate('/')} buttonClass={styles.button} />
         </div>
     );

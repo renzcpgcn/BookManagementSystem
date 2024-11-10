@@ -1,15 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styles from '../Styles/ComponentStyles.module.css';
 
 const BookDetails = ({ bookId, onBack }) => {
+    // const [book, setBook] = useState(null);
+
+    // useEffect(() => {
+    //     axios.get(`http://localhost:8000/api/books/${bookId}`)
+    //         .then(response => setBook(response.data))
+    //         .catch(error => console.error("Error fetching book details:", error));
+    // }, [bookId]);
+
     const [book, setBook] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/books/${bookId}`)
-            .then(response => setBook(response.data))
+        fetch(`http://localhost:8000/api/books/${bookId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => setBook(data))
             .catch(error => console.error("Error fetching book details:", error));
     }, [bookId]);
+
 
     if (!book) return <p>Loading...</p>;
 

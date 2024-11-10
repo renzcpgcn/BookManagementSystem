@@ -1,8 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styles from '../Styles/ComponentStyles.module.css';
 
 const BookForm = ({ bookId, onSave }) => {
+    // const [bookData, setBookData] = useState({
+    //     title: '',
+    //     author: '',
+    //     published_year: '',
+    //     genre: '',
+    //     description: ''
+    // });
+
+    // useEffect(() => {
+    //     if (bookId) {
+    //         axios.get(`http://localhost:8000/api/books/${bookId}`)
+    //             .then(response => setBookData(response.data))
+    //             .catch(error => console.error("Error fetching book:", error));
+    //     }
+    // }, [bookId]);
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     const request = bookId
+    //         ? axios.put(`http://localhost:8000/api/books/${bookId}`, bookData)
+    //         : axios.post('http://localhost:8000/api/books', bookData);
+
+    //     request.then(() => onSave()).catch(error => console.error("Error saving book:", error));
+    // };
+
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setBookData({ ...bookData, [name]: value });
+    // };
+
     const [bookData, setBookData] = useState({
         title: '',
         author: '',
@@ -10,28 +40,51 @@ const BookForm = ({ bookId, onSave }) => {
         genre: '',
         description: ''
     });
-
+    
     useEffect(() => {
         if (bookId) {
-            axios.get(`http://localhost:8000/api/books/${bookId}`)
-                .then(response => setBookData(response.data))
+            fetch(`http://localhost:8000/api/books/${bookId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then(data => setBookData(data))
                 .catch(error => console.error("Error fetching book:", error));
         }
     }, [bookId]);
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        const request = bookId
-            ? axios.put(`http://localhost:8000/api/books/${bookId}`, bookData)
-            : axios.post('http://localhost:8000/api/books', bookData);
-
-        request.then(() => onSave()).catch(error => console.error("Error saving book:", error));
+        
+        const method = bookId ? 'PUT' : 'POST';
+        const url = bookId
+            ? `http://localhost:8000/api/books/${bookId}`
+            : 'http://localhost:8000/api/books';
+    
+        fetch(url, {
+            method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bookData)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(() => onSave())
+            .catch(error => console.error("Error saving book:", error));
     };
-
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setBookData({ ...bookData, [name]: value });
     };
+    
 
     return (
         <div className={styles.container}>

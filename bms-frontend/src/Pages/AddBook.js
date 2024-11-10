@@ -8,7 +8,7 @@ const AddBook = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.header}>Add New Book</h1>
+            {/* <h1 className={styles.header}>Add New Book</h1> */}
             <BookForm onSave={() => navigate('/')} buttonClass={styles.button} />
         </div>
     );

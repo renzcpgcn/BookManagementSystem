@@ -1,11 +1,12 @@
 /* General Layout and Alignment */
 .container {
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #3e8229;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    max-width: 600px;
+    /* max-width: 600px; */
+    width: 1000px;
 }
 
 /* Header Styles for Component Titles */

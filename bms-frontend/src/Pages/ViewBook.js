@@ -9,7 +9,7 @@ const ViewBook = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.header}>Book Details</h1>
+            {/* <h1 className={styles.header}>Book Details</h1> */}
             <BookDetails bookId={id} onBack={() => navigate('/')} />
         </div>
     );
